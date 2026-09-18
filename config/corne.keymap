@@ -175,17 +175,6 @@
                         >;
                 };
 
-                macro_9: macro_9 {
-                        compatible = "zmk,behavior-macro";
-                        #binding-cells = <0>;
-                        bindings = <
-                        &macro_press
-                        &rgb_ug RGB_COLOR_HSB(128,100,100)
-                        >
-                        ,<
-                        &macro_release 
-                        >;
-                };
 
                 center_third: center_third {
                         compatible = "zmk,behavior-macro";
@@ -321,7 +310,7 @@
                         bindings = <
                                 &trans   &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4    &none   &none    &none    &none    &none    &kp BACKSPACE
                                 &trans  &bt BT_CLR &none &none     &none   &none    &none     &left_full    &right_full    &none &none    &none
-                                &trans  &none    &none     &none     &none   &none    &none &left_third    &center_third   &right_third   &macro_9    &none
+                                &trans  &none    &none     &none     &none   &none    &none &left_third    &center_third   &right_third   &none    &none
                                         &trans     &trans   &kp SPACE    &kp ENTER     &trans    &trans   
                 >;
 
