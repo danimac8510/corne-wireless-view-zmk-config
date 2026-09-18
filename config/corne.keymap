@@ -9,6 +9,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+
+
         macros {
 
                 // VIA macro 0: {KC_RALT,KC_LCTL,KC_RGHT}
@@ -277,9 +279,10 @@
 
         };
 
+
         keymap {
                 compatible = "zmk,keymap";
-                
+
                 default_layer {
                         display-name = "BAS";
                         bindings = <
@@ -323,6 +326,17 @@
                 >;
 
                 };
-        };
 
+                extra_1 {
+                        status = "reserved";
+                };
+
+                extra_2 {
+                        status = "reserved";
+                };
+
+                extra_3 {
+                        status = "reserved";
+                };
+        };
 };
