@@ -9,63 +9,320 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
+        macros {
 
-                default_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-                        display-name = "Base";
+                // VIA macro 0: {KC_RALT,KC_LCTL,KC_RGHT}
+                macro_0: macro_0 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp O &kp E &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp RIGHT
+                        >
+                        ,<&macro_release  
+                                &kp RALT
+                                &kp LCTRL
+                                &kp RIGHT     
+                        >
+                        ;
+                };
+
+                // VIA macro 1: {KC_RALT,KC_LCTL,KC_LEFT}
+                macro_1: macro_1 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp LEFT
+                        >
+                        ,<
+                        &macro_release 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp LEFT
+                        >
+                        ;
+                };
+
+                // VIA macro 2: {KC_RALT,KC_LCTL,KC_ENT}
+                macro_2: macro_2 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp ENTER
+                        >
+                        ,<
+                        &macro_release 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp ENTER
+                        >
+                        ;
+                };
+
+                // VIA macro 3: {KC_RALT,KC_LCTL,KC_UP}
+                macro_3: macro_3 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp UP
+                        >
+                        ,<
+                        &macro_release
+                        &kp RALT
+                        &kp LCTRL
+                        &kp UP
+                        >
+                        ;
+                };
+
+                // VIA macro 4: {KC_RALT,KC_LCTL,KC_DOWN}
+                macro_4: macro_4 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp DOWN
+                        >,
+                        <
+                        &macro_release
+                        &kp RALT
+                        &kp LCTRL
+                        &kp DOWN
                         >;
                 };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        display-name = "Lower";
+
+                // VIA macro 5: {KC_RALT,KC_E}
+                macro_5: macro_5 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
                         bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                          	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+                        &macro_press 
+                        &kp RALT
+                        &kp E
+                        >
+                        ,<
+                        &macro_release 
+                        &kp RALT
+                        &kp E
+                        >
+                        ;
+                };
+
+                // VIA macro 6: {KC_RALT,KC_N}{KC_RALT}{KC_N}
+                // (double ñ sequence on Spanish layout)
+                macro_6: macro_6 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp N
+                        >,
+                        <
+                        &macro_release
+                        &kp RALT
+                        &kp N
+                        >
+                        ;
+                };
+
+                // VIA macro 7: {KC_LGUI,KC_LALT,KC_ESC}
+                macro_7: macro_7 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                                &macro_press 
+                                &kp LGUI 
+                                &kp LALT 
+                                &kp ESC
+                        >
+                                ,<&macro_release                                 
+                                &kp LGUI 
+                                &kp LALT 
+                                &kp ESC
+                                >
+                        ;
+                };
+
+                // VIA macro 8: {KC_RALT}p
+                macro_8: macro_8 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press
+                        &kp RALT
+                        &kp P
+                        >
+                        ,<
+                        &macro_release 
+                        &kp RALT
+                        &kp P
                         >;
+                };
+
+                macro_9: macro_9 {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press
+                        &rgb_ug RGB_COLOR_HSB(128,100,100)
+                        >
+                        ,<
+                        &macro_release 
+                        >;
+                };
+
+                center_third: center_third {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp F
+                        >
+                        ,<
+                        &macro_release
+                        &kp RALT
+                        &kp LCTRL
+                        &kp F
+                        >
+                        ;
+                };
+
+                left_third: left_third {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp D
+                        >
+                        ,<
+                        &macro_release
+                        &kp RALT
+                        &kp LCTRL
+                        &kp D
+                        >
+                        ;
+                };
+                
+                right_third: right_third {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp G
+                        >
+                        ,<
+                        &macro_release
+                        &kp RALT
+                        &kp LCTRL
+                        &kp G
+                        >
+                        ;
+                };
+
+                right_full: right_full {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp T
+                        >
+                        ,<
+                        &macro_release
+                        &kp RALT
+                        &kp LCTRL
+                        &kp T
+                        >
+                        ;
+                };
+
+                left_full: left_full {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = <
+                        &macro_press 
+                        &kp RALT
+                        &kp LCTRL
+                        &kp E
+                        >
+                        ,<
+                        &macro_release
+                        &kp RALT
+                        &kp LCTRL
+                        &kp E
+                        >
+                        ;
+                };
+
+        };
+
+        keymap {
+                compatible = "zmk,keymap";
+                
+                default_layer {
+                        display-name = "BAS";
+                        bindings = <
+                                &kp ESC   &kp SINGLE_QUOTE  &kp COMMA &kp DOT   &kp P   &kp Y    &kp F   &kp G    &kp C    &kp R    &kp L    &kp BACKSPACE
+                                &kp TAB  &kp A &kp O &kp E     &kp U   &kp I    &kp D     &kp H    &kp T    &kp N &kp S    &kp GRAVE
+                                &kp LEFT_SHIFT  &kp SEMICOLON    &kp Q     &kp J     &kp K   &kp X    &kp B &kp M    &kp W    &kp V    &kp Z    &kp MINUS
+                                        &mo 1    &kp LEFT_GUI   &kp SPACE    &kp ENTER     &kp LEFT_CONTROL    &mo 2   
+                >;
+
+                };
+
+                lower_layer {
+                        display-name = "LOW";
+                        bindings = <
+                                &trans   &kp EXCL  &kp AT &kp HASH   &kp DLLR   &kp PRCNT    &kp SLASH   &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS    &kp QUESTION    &kp EQUAL    &macro_5
+                                &trans  &kp PIPE &kp ASTERISK &kp AMPERSAND     &kp KP_PLUS   &kp KP_MINUS    &kp LEFT_BRACE     &kp RIGHT_BRACE    &kp UP_ARROW    &kp LEFT_BRACKET &kp RIGHT_BRACKET    &kp HOME
+                                &kp CAPSLOCK  &kp LESS_THAN    &kp GREATER_THAN     &kp BACKSLASH     &none   &none    &none &kp LEFT_ARROW    &kp DOWN_ARROW   &kp RIGHT_ARROW    &none    &kp END
+                                        &trans     &trans   &kp SPACE    &kp ENTER     &trans    &trans   
+                >;
+
                 };
 
                 raise_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        display-name = "Raise";
+                        display-name = "RAI";
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                    	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
-                        >;
-                };
+                                &trans   &macro_7  &macro_8 &none   &none   &none    &kp NUMBER_7   &kp NUMBER_8    &kp NUMBER_9    &none    &none    &kp BACKSPACE
+                                &trans  &none &none &none     &none   &none    &kp NUMBER_4     &kp NUMBER_5    &kp NUMBER_6    &macro_6 &none    &none
+                                &trans  &none    &none     &none     &none   &none    &kp NUMBER_1 &kp NUMBER_2    &kp NUMBER_3   &kp NUMBER_0    &none    &none
+                                        &trans     &trans   &kp SPACE    &kp ENTER     &trans    &trans   
+                >;
 
-                extra_1 {
-                        status = "reserved";
                 };
+                
+                next_layes {
+                        display-name = "NEXT";
+                        bindings = <
+                                &trans   &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4    &none   &none    &none    &none    &none    &kp BACKSPACE
+                                &trans  &bt BT_CLR &none &none     &none   &none    &none     &left_full    &right_full    &none &none    &none
+                                &trans  &none    &none     &none     &none   &none    &none &left_third    &center_third   &right_third   &macro_9    &none
+                                        &trans     &trans   &kp SPACE    &kp ENTER     &trans    &trans   
+                >;
 
-                extra_2 {
-                        status = "reserved";
-                };
-
-                extra_3 {
-                        status = "reserved";
                 };
         };
+
 };
